@@ -20,7 +20,7 @@ produces:
 paths:
   /matching_words:
     # our controller name
-    x-swagger-router-controller: words
+    x-swagger-router-controller: hello_world
     get:
       description: return a list of word matching the query param
       # define the type of response for Success "200" and Error
