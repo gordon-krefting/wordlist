@@ -20,15 +20,22 @@ produces:
 paths:
   /matching_words:
     # our controller name
-    x-swagger-router-controller: hello_world
+    x-swagger-router-controller: matching_words
     get:
+      operationId: "matching_words"
       description: return a list of word matching the query param
       # define the type of response for Success "200" and Error
+      parameters:
+        - in: query
+          name: q
+          type: string
+          required: true
+          description: The thingie we're matching on
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/GetMoviesListResponse"
+            $ref: "#/definitions/GetWordsListResponse"
         default:
           description: Error
           schema:
@@ -37,11 +44,11 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  GetMoviesListResponse:
+  GetWordsListResponse:
     required:
       - words
     properties:
-      # The array of movies
+      # The array of words that match
       words:
         type: array
         items: 
