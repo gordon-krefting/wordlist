@@ -6,5 +6,17 @@ module.exports = {
 function matching_words(request, response) {
   var q = request.swagger.params.q.value;
 
-  response.json(["These","are","some","matching", "words"]);
+  var pattern = /[^a-z\.]+/;
+
+  if (q === '') {
+    response.json([]);
+    return;
+  }
+
+  if (q.match(pattern)) {
+    response.json([]);
+    return;
+	}
+
+  response.json(["These","are","some","matching", "words", "tree"]);
 }
